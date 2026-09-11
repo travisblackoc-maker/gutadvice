@@ -115,9 +115,29 @@ img, svg { max-width: 100%; display: block; }
   align-items: center;
   position: relative;
   z-index: 1;
+  grid-template-areas:
+    "eyebrow"
+    "headline"
+    "lede"
+    "ctas"
+    "illust";
 }
+.hero > .eyebrow  { grid-area: eyebrow; justify-self: start; }
+.hero > h1        { grid-area: headline; }
+.hero > .lede     { grid-area: lede; }
+.hero > .hero-cta { grid-area: ctas; }
+.hero > .hero-illust { grid-area: illust; }
 @media (min-width: 860px) {
-  .hero { grid-template-columns: 1.15fr 0.85fr; gap: 56px; padding: 80px 0 96px; }
+  .hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    padding: 80px 0 96px;
+    grid-template-areas:
+      "eyebrow  illust"
+      "headline illust"
+      "lede     illust"
+      "ctas     illust";
+  }
 }
 
 .eyebrow {
@@ -168,7 +188,7 @@ img, svg { max-width: 100%; display: block; }
 
 .hero-illust {
   width: 100%;
-  max-width: 360px;
+  max-width: 320px;
   margin: 0 auto;
   filter: drop-shadow(0 12px 28px rgba(26, 94, 92, 0.12));
 }

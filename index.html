@@ -51,25 +51,129 @@
         <a class="btn btn-ghost" href="#topics">Browse topics</a>
       </div>
 
-      <!-- Hand-drawn stomach illustration, friendly -->
-      <svg class="hero-illust" viewBox="0 0 320 220" aria-hidden="true">
-        <!-- Stomach outline -->
-        <path d="M70 80 C 60 50, 130 30, 180 50 C 230 70, 250 130, 220 170 C 190 210, 110 200, 80 160 C 55 125, 55 110, 70 80 Z"
-              fill="#f4ece1" stroke="#1a5e5c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- GI system illustration (anatomical line drawing, all inline SVG) -->
+      <svg class="hero-illust" viewBox="0 0 480 460" aria-hidden="true">
+        <title>The gastrointestinal tract</title>
+        <desc>Schematic of the human digestive system: mouth, esophagus, stomach, small intestine, large intestine, rectum.</desc>
+
+        <!-- Center the GI tract horizontally: anatomy occupies x ~150-330 (180 wide) -->
+
+        <!-- Mouth / oral cavity (oval) -->
+        <g id="gi-mouth">
+          <ellipse cx="240" cy="40" rx="14" ry="8"
+                   fill="#e2ebe9" stroke="#1a5e5c" stroke-width="2"/>
+          <line x1="232" y1="40" x2="248" y2="40" stroke="#1a5e5c" stroke-width="1.2" stroke-linecap="round"/>
+        </g>
+
         <!-- Esophagus -->
-        <path d="M150 60 q-5 -20 -2 -35 q3 -10 10 -15" stroke="#1a5e5c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Duodenum -->
-        <path d="M210 175 q15 10 18 25" stroke="#1a5e5c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Inside squiggle (subtle) -->
-        <path d="M120 110 q15 -10 30 0 q15 10 30 0" stroke="#1a5e5c" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
-        <path d="M125 140 q15 -8 28 0 q15 8 28 -2" stroke="#1a5e5c" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
-        <!-- Smile (anthropomorphic touch) -->
-        <path d="M140 130 q20 14 38 -2" stroke="#c25c3a" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <circle cx="155" cy="115" r="2.5" fill="#1a5e5c"/>
-        <circle cx="180" cy="115" r="2.5" fill="#1a5e5c"/>
-        <!-- Sparkle -->
-        <path d="M250 60 l0 8 M246 64 l8 0" stroke="#c25c3a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M55 175 l0 6 M52 178 l6 0" stroke="#c25c3a" stroke-width="2" stroke-linecap="round"/>
+        <g id="gi-esophagus">
+          <path d="M240 48 C 238 70, 242 90, 240 110"
+                fill="none" stroke="#1a5e5c" stroke-width="2.6" stroke-linecap="round"/>
+        </g>
+
+        <!-- Stomach (clearly J-shaped with fundus bulge and pylorus) -->
+        <g id="gi-stomach">
+          <path d="M240 110
+                   C 228 108, 212 116, 204 134
+                   C 198 152, 202 172, 218 184
+                   C 238 196, 264 192, 274 178
+                   C 280 168, 278 154, 270 144
+                   C 262 134, 252 130, 244 128
+                   Z"
+                fill="#e2ebe9" stroke="#1a5e5c" stroke-width="2.4" stroke-linejoin="round"/>
+          <!-- Stomach rugae (inner folds, subtle) -->
+          <path d="M218 138 q10 -3 18 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <path d="M216 156 q12 -3 22 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <path d="M220 174 q12 -3 22 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <!-- Pylorus (exit to duodenum) -->
+          <path d="M274 178 C 280 186, 282 196, 280 206" fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+
+        <!-- Small intestine (coiled tube, 3 horizontal loops) -->
+        <g id="gi-small-intestine">
+          <path d="M280 206
+                   C 300 210, 308 226, 292 236
+                   C 276 246, 276 264, 292 274
+                   C 308 284, 308 302, 292 312
+                   C 276 322, 278 342, 294 350"
+                fill="none" stroke="#1a5e5c" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M294 350
+                   C 278 350, 260 342, 260 328
+                   C 260 314, 276 312, 276 298
+                   C 276 284, 260 282, 260 268
+                   C 260 254, 276 250, 278 238
+                   C 280 226, 260 220, 260 212"
+                fill="none" stroke="#1a5e5c" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+
+        <!-- Large intestine (frame around small intestine) -->
+        <g id="gi-large-intestine">
+          <!-- Ascending colon (viewer's left side) -->
+          <path d="M164 196
+                   C 156 206, 150 224, 150 246
+                   C 150 274, 156 304, 170 332"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Transverse colon (across the top, behind the stomach area) -->
+          <path d="M164 196
+                   C 184 188, 216 184, 248 186
+                   C 280 188, 312 192, 340 200"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Descending colon (viewer's right side) -->
+          <path d="M340 200
+                   C 350 212, 356 232, 356 256
+                   C 356 282, 350 314, 340 336"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Sigmoid colon (S-curve at the bottom) -->
+          <path d="M170 332
+                   C 184 348, 204 354, 222 348
+                   C 238 342, 248 332, 248 320"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Rectum (vertical) -->
+          <path d="M248 320 L 248 358"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Anus (small dot at the bottom) -->
+          <circle cx="248" cy="364" r="2.4" fill="#1a5e5c"/>
+
+          <!-- Cecum (small pouch at the bottom of ascending colon) -->
+          <path d="M164 196 C 158 200, 154 208, 156 216" fill="none" stroke="#1a5e5c" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Appendix (small dangling bit from cecum) -->
+          <path d="M156 216 C 152 222, 148 232, 144 244" fill="none" stroke="#1a5e5c" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- Labels with thin connector lines.
+             GI tract sits at x~150-330; labels are placed in left and right
+             gutters (x: 10-140 left, 340-470 right). -->
+        <g id="gi-labels" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#9c4f30" letter-spacing="0.04em">
+          <!-- Mouth (right) -->
+          <line x1="254" y1="40" x2="340" y2="40" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="44">MOUTH</text>
+
+          <!-- Esophagus (right) -->
+          <line x1="244" y1="80" x2="340" y2="80" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="84">ESOPHAGUS</text>
+
+          <!-- Stomach (left) -->
+          <line x1="206" y1="148" x2="140" y2="148" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="136" y="152" text-anchor="end">STOMACH</text>
+
+          <!-- Small intestine (right) -->
+          <line x1="304" y1="280" x2="370" y2="280" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="374" y="284">SMALL</text>
+          <text x="374" y="296">INTESTINE</text>
+
+          <!-- Large intestine (left) -->
+          <line x1="152" y1="262" x2="100" y2="262" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="96" y="266" text-anchor="end">LARGE</text>
+          <text x="96" y="278" text-anchor="end">INTESTINE</text>
+
+          <!-- Rectum (right) -->
+          <line x1="248" y1="338" x2="340" y2="338" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="342">RECTUM</text>
+
+          <!-- Appendix (left, small label) -->
+          <line x1="146" y1="240" x2="100" y2="240" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="96" y="244" text-anchor="end" font-size="9">APPENDIX</text>
+        </g>
       </svg>
     </section>
 
@@ -125,7 +229,7 @@
 
     <section class="container" id="about">
       <h2 class="section-title">About the doctor</h2>
-      <p class="section-sub">Written by a US board-certified gastroenterologist who wants patients to understand and have the greatest insights into evidence-based medicine and how their doctors make decisions.</p>
+      <p class="section-sub">Written by a US board-certified gastroenterologist who got tired of Googling alongside her patients.</p>
       <div class="founder">
         <div class="avatar" aria-hidden="true">Dr. S</div>
         <div>
