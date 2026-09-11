@@ -97,23 +97,45 @@ img, svg { max-width: 100%; display: block; }
 .nav-cta { font-size: 15px; }
 
 /* ---- Hero ----
-   Single full-width block. Text content is positioned on the right side
-   of the page via a 2-column grid where the text occupies the right column
-   and the left column is empty (intentional negative space). No illustration
-   in the hero — the illustration lives in the section below. */
+   V1.3: hero is a HALF-WIDTH block on the right side of the page.
+   On desktop, the hero occupies the right 50% of the viewport; the
+   left 50% is intentionally empty negative space (cream background,
+   with a thin vertical accent rule at the boundary).
+   On mobile, the hero expands to full width. */
 .hero {
+  width: 100%;
   padding: 72px 0 80px;
   position: relative;
   z-index: 1;
 }
+@media (min-width: 760px) {
+  .hero {
+    width: 55%;
+    margin-left: auto;
+    padding: 96px 0 112px;
+  }
+  /* Thin vertical accent rule at the left edge of the hero (the
+     boundary between the empty left half and the hero) */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    width: 1px;
+    background: var(--border);
+  }
+}
+
 .hero-inner {
-  max-width: 560px;
+  max-width: 460px;
   margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
   text-align: left;
 }
 @media (min-width: 760px) {
-  .hero { padding: 96px 0 112px; }
-  .hero-inner { max-width: 600px; margin-left: auto; }
+  .hero-inner { max-width: 460px; padding: 0 56px; }
 }
 
 .eyebrow {
