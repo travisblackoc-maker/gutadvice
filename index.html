@@ -84,6 +84,38 @@
           <path d="M274 178 C 280 186, 282 196, 280 206" fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
         </g>
 
+        <!-- Liver (large, upper-right of stomach, behind it) -->
+        <g id="illust-liver" opacity="0.85">
+          <path d="M260 96
+                   C 290 86, 332 86, 358 100
+                   C 376 110, 380 126, 372 138
+                   C 354 152, 320 152, 296 144
+                   C 278 138, 268 124, 264 112
+                   C 260 104, 258 100, 260 96 Z"
+                fill="#f6e1d3" stroke="#1a5e5c" stroke-width="2" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Pancreas (long thin, behind the stomach) -->
+        <g id="illust-pancreas" opacity="0.85">
+          <path d="M212 180
+                   C 232 174, 256 172, 282 176
+                   C 300 180, 312 188, 312 196
+                   C 312 204, 300 208, 282 206
+                   C 256 204, 232 204, 212 200
+                   C 200 196, 200 184, 212 180 Z"
+                fill="#f4ece1" stroke="#1a5e5c" stroke-width="1.8" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Gallbladder (small pear-shaped, on underside of liver) -->
+        <g id="illust-gallbladder" opacity="0.9">
+          <path d="M282 158
+                   C 290 158, 296 162, 296 170
+                   C 296 178, 290 184, 282 184
+                   C 276 184, 274 178, 274 170
+                   C 274 164, 276 158, 282 158 Z"
+                fill="#9c4f30" stroke="#1a5e5c" stroke-width="1.6" stroke-linejoin="round" opacity="0.7"/>
+        </g>
+
         <!-- Small intestine (coiled tube, 3 horizontal loops) -->
         <g id="gi-small-intestine">
           <path d="M280 206
@@ -131,8 +163,6 @@
 
           <!-- Cecum (small pouch at the bottom of ascending colon) -->
           <path d="M164 196 C 158 200, 154 208, 156 216" fill="none" stroke="#1a5e5c" stroke-width="1.6" stroke-linecap="round"/>
-          <!-- Appendix (small dangling bit from cecum) -->
-          <path d="M156 216 C 152 222, 148 232, 144 244" fill="none" stroke="#1a5e5c" stroke-width="1.5" stroke-linecap="round"/>
         </g>
 
         <!-- Labels with thin connector lines.
@@ -165,9 +195,18 @@
           <line x1="248" y1="338" x2="340" y2="338" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
           <text x="344" y="342">RECTUM</text>
 
-          <!-- Appendix (left, small label) -->
-          <line x1="146" y1="240" x2="100" y2="240" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-          <text x="96" y="244" text-anchor="end" font-size="9">APPENDIX</text>
+          <!-- LIVER (right, above the liver organ) -->
+          <line x1="340" y1="112" x2="400" y2="112" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="404" y="116">LIVER</text>
+
+          <!-- GALLBLADDER (right, small label) -->
+          <line x1="298" y1="170" x2="400" y2="170" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="404" y="174" font-size="9">GALLBLADDER</text>
+
+          <!-- PANCREAS (left, below the pancreas organ) -->
+          <line x1="240" y1="200" x2="80" y2="200" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="76" y="204" text-anchor="end">PANCREAS</text>
+
         </g>
       </svg>
     </section>
