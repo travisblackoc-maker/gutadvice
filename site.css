@@ -196,14 +196,14 @@ img, svg { max-width: 100%; display: block; }
   z-index: 1;
 }
 .illust-inner {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
 .anatomy {
   width: 100%;
   height: auto;
-  max-width: 720px;
+  max-width: 880px;
   margin: 0 auto;
   filter: drop-shadow(0 16px 32px rgba(26, 94, 92, 0.10));
 }
