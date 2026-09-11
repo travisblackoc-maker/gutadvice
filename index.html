@@ -13,16 +13,10 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a5e5c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23faf5ee' text-anchor='middle' font-weight='700'%3EG%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./site.css" />
 </head>
 <body>
-  <!-- Hand-drawn motif decorations (subtle, all inline SVG so no asset deps) -->
-  <svg class="motif motif-tl" viewBox="0 0 200 200" aria-hidden="true">
-    <path d="M20 100 q40 -50 90 -30 q40 15 60 60" stroke="#c4a484" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <circle cx="170" cy="130" r="3" fill="#c4a484"/>
-    <path d="M30 130 q20 -10 35 5" stroke="#c4a484" stroke-width="1" fill="none" stroke-linecap="round"/>
-  </svg>
 
   <header class="container">
     <nav class="nav">
@@ -40,37 +34,123 @@
   </header>
 
   <main>
-    <section class="container hero">
-      <span class="eyebrow">Evidence-based · No fluff</span>
-      <h1>Better gut health, explained <em>without</em> the wellness fluff.</h1>
-      <p class="lede">
-        GutAdvice breaks down what the research actually says about IBS, reflux, bloating, SIBO, and the rest of the GI alphabet soup — so you can make informed decisions about your own body.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#newsletter">Get the weekly digest</a>
-        <a class="btn btn-ghost" href="#topics">Browse topics</a>
+    <!-- HERO: text on the right side, full-bleed. No illustration in the hero. -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="eyebrow">Evidence-based · No fluff</span>
+        <h1>Better gut health, explained <em>without</em> the wellness fluff.</h1>
+        <p class="lede">
+          GutAdvice breaks down what the research actually says about IBS, reflux, bloating, SIBO, and the rest of the GI alphabet soup — so you can make informed decisions about your own body.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#newsletter">Get the weekly digest</a>
+          <a class="btn btn-ghost" href="#topics">Browse topics</a>
+        </div>
       </div>
+    </section>
 
-      <!-- Hand-drawn stomach illustration, friendly -->
-      <svg class="hero-illust" viewBox="0 0 320 220" aria-hidden="true">
-        <!-- Stomach outline -->
-        <path d="M70 80 C 60 50, 130 30, 180 50 C 230 70, 250 130, 220 170 C 190 210, 110 200, 80 160 C 55 125, 55 110, 70 80 Z"
-              fill="#f4ece1" stroke="#1a5e5c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-        <!-- Esophagus -->
-        <path d="M150 60 q-5 -20 -2 -35 q3 -10 10 -15" stroke="#1a5e5c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Duodenum -->
-        <path d="M210 175 q15 10 18 25" stroke="#1a5e5c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Inside squiggle (subtle) -->
-        <path d="M120 110 q15 -10 30 0 q15 10 30 0" stroke="#1a5e5c" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
-        <path d="M125 140 q15 -8 28 0 q15 8 28 -2" stroke="#1a5e5c" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.5"/>
-        <!-- Smile (anthropomorphic touch) -->
-        <path d="M140 130 q20 14 38 -2" stroke="#c25c3a" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <circle cx="155" cy="115" r="2.5" fill="#1a5e5c"/>
-        <circle cx="180" cy="115" r="2.5" fill="#1a5e5c"/>
-        <!-- Sparkle -->
-        <path d="M250 60 l0 8 M246 64 l8 0" stroke="#c25c3a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M55 175 l0 6 M52 178 l6 0" stroke="#c25c3a" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+    <!-- ILLUSTRATION: full-width anatomical stomach, in a separate section below the hero. -->
+    <section class="illust-section">
+      <div class="container illust-inner">
+        <svg class="anatomy" viewBox="0 0 720 360" aria-hidden="true" role="img" aria-label="Anatomical illustration of the stomach and surrounding organs.">
+          <title>Stomach and adjacent organs</title>
+          <desc>Anatomical line illustration of the stomach, esophagus, duodenum, with the liver and pancreas suggested in the background. Stylized, modern flat-medical aesthetic.</desc>
+
+          <!-- Soft cream background panel (very subtle) -->
+          <rect x="0" y="0" width="720" height="360" fill="#fbf6ec" opacity="0"/>
+
+          <!-- Esophagus (vertical tube entering the stomach from above) -->
+          <g id="illust-esophagus">
+            <path d="M340 30
+                     C 336 50, 344 70, 340 92"
+                  fill="none" stroke="#1a5e5c" stroke-width="3.2" stroke-linecap="round"/>
+            <!-- subtle inner highlight -->
+            <path d="M340 50 C 339 60, 341 70, 340 80"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+          </g>
+
+          <!-- Liver (suggested silhouette, top-right, behind stomach) -->
+          <g id="illust-liver" opacity="0.7">
+            <path d="M380 88
+                     C 420 80, 470 84, 500 100
+                     C 520 112, 522 134, 510 148
+                     C 488 162, 460 162, 432 156
+                     C 410 152, 392 140, 384 124
+                     C 378 110, 376 96, 380 88 Z"
+                  fill="#f6e1d3" stroke="#1a5e5c" stroke-width="1.6" stroke-linejoin="round" opacity="0.85"/>
+            <text x="455" y="130" font-family="Inter, sans-serif" font-size="13" font-weight="500"
+                  fill="#9c4f30" text-anchor="middle" letter-spacing="0.04em" opacity="0.8">LIVER</text>
+          </g>
+
+          <!-- Stomach — anatomically correct J-shape with proper proportions -->
+          <g id="illust-stomach">
+            <!-- Main body of stomach, soft warm-cream fill, teal stroke -->
+            <path d="M340 92
+                     C 308 92, 280 110, 272 144
+                     C 266 174, 274 208, 296 234
+                     C 322 264, 360 280, 400 274
+                     C 432 268, 458 250, 466 222
+                     C 472 200, 466 178, 454 162
+                     C 442 144, 422 132, 402 124
+                     C 388 118, 372 112, 358 102
+                     C 352 96, 346 92, 340 92 Z"
+                  fill="#fbf3e8" stroke="#1a5e5c" stroke-width="3.2" stroke-linejoin="round"/>
+
+            <!-- Stomach rugae (inner folds) — subtle, sparse -->
+            <path d="M298 138 C 312 132, 326 132, 338 138"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            <path d="M292 162 C 310 156, 328 156, 344 162"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            <path d="M290 188 C 308 184, 326 184, 344 188"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            <path d="M296 216 C 314 212, 332 212, 350 216"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            <path d="M308 240 C 326 238, 344 238, 360 240"
+                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- Pyloric sphincter (the small notch at the bottom of the stomach) -->
+            <path d="M404 270 C 408 282, 414 290, 422 296"
+                  fill="none" stroke="#1a5e5c" stroke-width="3.2" stroke-linecap="round"/>
+            <circle cx="404" cy="270" r="3" fill="#1a5e5c" opacity="0.7"/>
+          </g>
+
+          <!-- Pancreas (suggested silhouette, behind stomach, lower) -->
+          <g id="illust-pancreas" opacity="0.7">
+            <path d="M380 244
+                     C 408 240, 440 240, 470 244
+                     C 488 248, 500 256, 498 264
+                     C 494 270, 470 272, 440 270
+                     C 410 268, 388 264, 378 258
+                     C 372 252, 374 246, 380 244 Z"
+                  fill="#f4ece1" stroke="#1a5e5c" stroke-width="1.6" stroke-linejoin="round" opacity="0.85"/>
+            <text x="436" y="262" font-family="Inter, sans-serif" font-size="13" font-weight="500"
+                  fill="#9c4f30" text-anchor="middle" letter-spacing="0.04em" opacity="0.8">PANCREAS</text>
+          </g>
+
+          <!-- Duodenum (C-shaped first part of small intestine) -->
+          <g id="illust-duodenum">
+            <path d="M422 296
+                     C 444 304, 462 320, 470 340
+                     C 472 348, 466 354, 458 354
+                     C 446 354, 432 348, 422 340
+                     C 414 332, 412 320, 416 312"
+                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- Small intestine (a hint of coiled tube, simpler than the full GI version) -->
+          <g id="illust-small-intestine" opacity="0.85">
+            <path d="M458 354
+                     C 478 360, 488 380, 472 392
+                     C 456 404, 460 426, 478 438
+                     C 494 448, 488 466, 470 470"
+                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M472 392 C 460 392, 452 380, 456 372" fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+
+          <!-- Two thin pointer lines (no labels — just the warm aesthetic) -->
+          <!-- Already shown: LIVER and PANCREAS labels above -->
+        </svg>
+      </div>
     </section>
 
     <section class="container" id="value">

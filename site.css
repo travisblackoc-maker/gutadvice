@@ -1,8 +1,15 @@
-/* warm-clinical — Variant B for gutadvice.com V1
+/* warm-clinical — gutadvice.com V1.2
    Design intent: feels like a thoughtful doctor sitting across from you.
    Palette: cream background, deep teal accent, terracotta highlights.
    Type: Fraunces (optical-size serif) + Inter (sans body).
-   Motifs: subtle hand-drawn squiggles and a friendly anthropomorphic stomach. */
+
+   V1.2 layout (per founder 2026-09-11 02:09 UTC):
+   - Hero is a single full-width block with the text content positioned
+     on the right side of the page (no illustration in the hero).
+   - A separate, full-width "illust-section" sits between the hero and
+     the value-cards section, with a new anatomical stomach illustration.
+   - The illustration style is "modern flat-medical" — accurate proportions,
+     soft warm fill, single teal stroke, no cartoonish features. */
 
 :root {
   --accent: #1a5e5c;
@@ -51,23 +58,6 @@ img, svg { max-width: 100%; display: block; }
   padding: 0 24px;
 }
 
-/* ---- Hand-drawn motif decorations ---- */
-.motif {
-  position: fixed;
-  pointer-events: none;
-  opacity: 0.55;
-  z-index: 0;
-}
-.motif-tl {
-  top: 60px;
-  left: -40px;
-  width: 200px;
-  height: 200px;
-}
-@media (max-width: 760px) {
-  .motif { display: none; }
-}
-
 /* ---- Top nav ---- */
 .nav {
   display: flex;
@@ -106,18 +96,24 @@ img, svg { max-width: 100%; display: block; }
 .nav-links a { color: var(--ink-muted); font-weight: 500; }
 .nav-cta { font-size: 15px; }
 
-/* ---- Hero ---- */
+/* ---- Hero ----
+   Single full-width block. Text content is positioned on the right side
+   of the page via a 2-column grid where the text occupies the right column
+   and the left column is empty (intentional negative space). No illustration
+   in the hero — the illustration lives in the section below. */
 .hero {
-  padding: 56px 0 80px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+  padding: 72px 0 80px;
   position: relative;
   z-index: 1;
 }
-@media (min-width: 860px) {
-  .hero { grid-template-columns: 1.15fr 0.85fr; gap: 56px; padding: 80px 0 96px; }
+.hero-inner {
+  max-width: 560px;
+  margin-left: auto;
+  text-align: left;
+}
+@media (min-width: 760px) {
+  .hero { padding: 96px 0 112px; }
+  .hero-inner { max-width: 600px; margin-left: auto; }
 }
 
 .eyebrow {
@@ -137,7 +133,7 @@ img, svg { max-width: 100%; display: block; }
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(38px, 5.6vw, 64px);
+  font-size: clamp(40px, 5.8vw, 68px);
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin: 0 0 24px;
@@ -152,7 +148,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .hero .lede {
-  font-size: clamp(18px, 1.8vw, 22px);
+  font-size: clamp(17px, 1.7vw, 21px);
   color: var(--ink-muted);
   max-width: 52ch;
   margin: 0 0 36px;
@@ -166,11 +162,28 @@ img, svg { max-width: 100%; display: block; }
   align-items: center;
 }
 
-.hero-illust {
-  width: 100%;
-  max-width: 360px;
+/* ---- Illustration section (between hero and value cards) ----
+   Full-width, centered, with a subtle warm-cream background tint that
+   separates it from the hero above and the value section below. */
+.illust-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 0;
+  position: relative;
+  z-index: 1;
+}
+.illust-inner {
+  max-width: 760px;
   margin: 0 auto;
-  filter: drop-shadow(0 12px 28px rgba(26, 94, 92, 0.12));
+  text-align: center;
+}
+.anatomy {
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+  margin: 0 auto;
+  filter: drop-shadow(0 16px 32px rgba(26, 94, 92, 0.10));
 }
 
 /* ---- Buttons ---- */
@@ -226,6 +239,7 @@ img, svg { max-width: 100%; display: block; }
 
 /* ---- Section ---- */
 section { padding: 80px 0; }
+.illust-section { padding: 56px 0; }   /* override the section padding for the illustration band */
 .section-title {
   font-family: var(--font-display);
   font-weight: 500;
