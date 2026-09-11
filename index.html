@@ -49,159 +49,132 @@
       </div>
     </section>
 
-    <!-- ILLUSTRATION: full-width horizontal-flow GI tract. -->
+    <!-- ILLUSTRATION: PR #8 GI tract (clinical line drawing) -->
     <section class="illust-section">
       <div class="container illust-inner">
-        <svg class="anatomy" viewBox="0 0 900 360" aria-hidden="true" role="img" aria-label="Anatomical illustration of the gastrointestinal tract from mouth to rectum.">
-          <title>The gastrointestinal tract</title>
-          <desc>Anatomical line illustration of the full gastrointestinal tract flowing left to right: mouth, esophagus, stomach, small intestine, large intestine, rectum. Modern flat-medical aesthetic with warm palette and minimal labels.</desc>
+        <svg class="anatomy" viewBox="0 0 480 460" aria-hidden="true">
+        <title>The gastrointestinal tract</title>
+        <desc>Schematic of the human digestive system: mouth, esophagus, stomach, small intestine, large intestine, rectum.</desc>
 
-          <!-- Subtle background tint (very faint) -->
-          <rect x="0" y="0" width="900" height="360" fill="#fbf6ec" opacity="0"/>
+        <!-- Center the GI tract horizontally: anatomy occupies x ~150-330 (180 wide) -->
 
-          <!-- MOUTH (top-left) -->
-          <g id="illust-mouth">
-            <ellipse cx="60" cy="80" rx="18" ry="11"
-                     fill="#fbf3e8" stroke="#1a5e5c" stroke-width="2.4"/>
-            <line x1="48" y1="80" x2="72" y2="80" stroke="#1a5e5c" stroke-width="1.4" stroke-linecap="round"/>
-          </g>
+        <!-- Mouth / oral cavity (oval) -->
+        <g id="gi-mouth">
+          <ellipse cx="240" cy="40" rx="14" ry="8"
+                   fill="#e2ebe9" stroke="#1a5e5c" stroke-width="2"/>
+          <line x1="232" y1="40" x2="248" y2="40" stroke="#1a5e5c" stroke-width="1.2" stroke-linecap="round"/>
+        </g>
 
-          <!-- ESOPHAGUS (vertical tube from mouth down to stomach) -->
-          <g id="illust-esophagus">
-            <path d="M60 92 C 58 110, 62 130, 60 152"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-          </g>
+        <!-- Esophagus -->
+        <g id="gi-esophagus">
+          <path d="M240 48 C 238 70, 242 90, 240 110"
+                fill="none" stroke="#1a5e5c" stroke-width="2.6" stroke-linecap="round"/>
+        </g>
 
-          <!-- STOMACH (J-shaped, larger and more central) -->
-          <g id="illust-stomach">
-            <path d="M60 152
-                     C 36 150, 18 174, 22 208
-                     C 26 240, 50 264, 84 274
-                     C 122 286, 162 282, 188 268
-                     C 208 256, 214 232, 208 210
-                     C 200 188, 178 172, 152 162
-                     C 130 154, 100 150, 76 148
-                     C 70 148, 64 150, 60 152 Z"
-                  fill="#fbf3e8" stroke="#1a5e5c" stroke-width="3" stroke-linejoin="round"/>
-            <!-- Stomach rugae (subtle inner folds) -->
-            <path d="M40 192 C 56 188, 70 188, 82 194"
-                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <path d="M38 218 C 56 214, 76 214, 94 220"
-                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <path d="M48 246 C 70 244, 90 244, 108 248"
-                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <path d="M70 270 C 92 268, 110 268, 128 270"
-                  fill="none" stroke="#1a5e5c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <!-- Pylorus -->
-            <path d="M188 268 C 196 276, 200 286, 198 296"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="188" cy="268" r="3" fill="#1a5e5c" opacity="0.7"/>
-          </g>
+        <!-- Stomach (clearly J-shaped with fundus bulge and pylorus) -->
+        <g id="gi-stomach">
+          <path d="M240 110
+                   C 228 108, 212 116, 204 134
+                   C 198 152, 202 172, 218 184
+                   C 238 196, 264 192, 274 178
+                   C 280 168, 278 154, 270 144
+                   C 262 134, 252 130, 244 128
+                   Z"
+                fill="#e2ebe9" stroke="#1a5e5c" stroke-width="2.4" stroke-linejoin="round"/>
+          <!-- Stomach rugae (inner folds, subtle) -->
+          <path d="M218 138 q10 -3 18 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <path d="M216 156 q12 -3 22 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <path d="M220 174 q12 -3 22 0" fill="none" stroke="#1a5e5c" stroke-width="0.8" opacity="0.45" stroke-linecap="round"/>
+          <!-- Pylorus (exit to duodenum) -->
+          <path d="M274 178 C 280 186, 282 196, 280 206" fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
 
-          <!-- DUODENUM (C-curve from pylorus to start of small intestine) -->
-          <g id="illust-duodenum">
-            <path d="M198 296
-                     C 218 308, 238 318, 252 318
-                     C 264 318, 270 312, 268 304
-                     C 264 296, 252 292, 240 292"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.6" stroke-linecap="round"/>
-          </g>
+        <!-- Small intestine (coiled tube, 3 horizontal loops) -->
+        <g id="gi-small-intestine">
+          <path d="M280 206
+                   C 300 210, 308 226, 292 236
+                   C 276 246, 276 264, 292 274
+                   C 308 284, 308 302, 292 312
+                   C 276 322, 278 342, 294 350"
+                fill="none" stroke="#1a5e5c" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M294 350
+                   C 278 350, 260 342, 260 328
+                   C 260 314, 276 312, 276 298
+                   C 276 284, 260 282, 260 268
+                   C 260 254, 276 250, 278 238
+                   C 280 226, 260 220, 260 212"
+                fill="none" stroke="#1a5e5c" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
 
-          <!-- SMALL INTESTINE (3-loop coiled tube, cleaner than PR #8's chaotic version) -->
-          <g id="illust-small-intestine">
-            <!-- Subtle fill behind the coils -->
-            <path d="M252 318
-                     C 270 310, 350 310, 372 308
-                     C 388 308, 392 322, 380 332
-                     C 360 342, 290 342, 268 332
-                     C 256 326, 252 320, 252 318 Z"
-                  fill="#fbf3e8" stroke="none" opacity="0.5"/>
-            <!-- Top curve -->
-            <path d="M252 318
-                     C 280 308, 350 308, 372 308"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
-            <!-- Right curve -->
-            <path d="M372 308
-                     C 388 312, 390 326, 380 332"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
-            <!-- Bottom curve -->
-            <path d="M380 332
-                     C 360 340, 290 340, 268 332"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
-            <!-- Left curve -->
-            <path d="M268 332
-                     C 256 328, 252 322, 252 318"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
-            <!-- Inner loops (2-3 horizontal squiggles inside the main loop) -->
-            <path d="M278 314
-                     C 296 310, 320 310, 340 312
-                     C 350 314, 356 318, 352 322"
-                  fill="none" stroke="#1a5e5c" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
-            <path d="M278 326
-                     C 296 330, 320 330, 340 328
-                     C 350 326, 356 322, 352 318"
-                  fill="none" stroke="#1a5e5c" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
-            <!-- End at the cecum/ascending colon entry point -->
-            <path d="M380 332
-                     C 384 326, 388 322, 392 318"
-                  fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
-          </g>
+        <!-- Large intestine (frame around small intestine) -->
+        <g id="gi-large-intestine">
+          <!-- Ascending colon (viewer's left side) -->
+          <path d="M164 196
+                   C 156 206, 150 224, 150 246
+                   C 150 274, 156 304, 170 332"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Transverse colon (across the top, behind the stomach area) -->
+          <path d="M164 196
+                   C 184 188, 216 184, 248 186
+                   C 280 188, 312 192, 340 200"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Descending colon (viewer's right side) -->
+          <path d="M340 200
+                   C 350 212, 356 232, 356 256
+                   C 356 282, 350 314, 340 336"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Sigmoid colon (S-curve at the bottom) -->
+          <path d="M170 332
+                   C 184 348, 204 354, 222 348
+                   C 238 342, 248 332, 248 320"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Rectum (vertical) -->
+          <path d="M248 320 L 248 358"
+                fill="none" stroke="#1a5e5c" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Anus (small dot at the bottom) -->
+          <circle cx="248" cy="364" r="2.4" fill="#1a5e5c"/>
 
-          <!-- LARGE INTESTINE (frame around the small intestine on the right) -->
-          <g id="illust-large-intestine">
-            <!-- Ascending colon (going up on the right side, viewer's right) -->
-            <path d="M396 308
-                     C 410 280, 430 244, 460 210
-                     C 480 188, 504 174, 528 170"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <!-- Transverse colon (across the top) -->
-            <path d="M528 170
-                     C 560 168, 600 168, 640 172
-                     C 680 176, 720 184, 750 196"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <!-- Descending colon (going down on the right) -->
-            <path d="M750 196
-                     C 770 210, 780 232, 782 256
-                     C 784 280, 776 300, 760 314"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <!-- Sigmoid colon (S-curve to rectum) -->
-            <path d="M760 314
-                     C 740 326, 716 332, 700 326
-                     C 686 320, 682 310, 692 302"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <!-- Rectum (vertical) -->
-            <path d="M692 302 L 692 332"
-                  fill="none" stroke="#1a5e5c" stroke-width="3" stroke-linecap="round"/>
-            <!-- Anus (dot) -->
-            <circle cx="692" cy="338" r="3" fill="#1a5e5c"/>
+          <!-- Cecum (small pouch at the bottom of ascending colon) -->
+          <path d="M164 196 C 158 200, 154 208, 156 216" fill="none" stroke="#1a5e5c" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Appendix (small dangling bit from cecum) -->
+          <path d="M156 216 C 152 222, 148 232, 144 244" fill="none" stroke="#1a5e5c" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
 
-            <!-- Cecum (small pouch at the start of ascending colon) -->
-            <path d="M396 308 C 388 312, 384 320, 386 328" fill="none" stroke="#1a5e5c" stroke-width="1.6" stroke-linecap="round"/>
-          </g>
+        <!-- Labels with thin connector lines.
+             GI tract sits at x~150-330; labels are placed in left and right
+             gutters (x: 10-140 left, 340-470 right). -->
+        <g id="gi-labels" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#9c4f30" letter-spacing="0.04em">
+          <!-- Mouth (right) -->
+          <line x1="254" y1="40" x2="340" y2="40" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="44">MOUTH</text>
 
-          <!-- 4 minimal labels with thin terracotta connector lines -->
-          <g id="illust-labels" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#9c4f30" letter-spacing="0.05em">
-            <!-- MOUTH (above the mouth) -->
-            <line x1="60" y1="60" x2="60" y2="32" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-            <text x="60" y="26" text-anchor="middle">MOUTH</text>
+          <!-- Esophagus (right) -->
+          <line x1="244" y1="80" x2="340" y2="80" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="84">ESOPHAGUS</text>
 
-            <!-- STOMACH (below the stomach) -->
-            <line x1="110" y1="290" x2="110" y2="332" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-            <text x="110" y="346" text-anchor="middle">STOMACH</text>
+          <!-- Stomach (left) -->
+          <line x1="206" y1="148" x2="140" y2="148" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="136" y="152" text-anchor="end">STOMACH</text>
 
-            <!-- SMALL INTESTINE (to the right of the coils, no connector line crossing the artwork) -->
-            <line x1="378" y1="308" x2="416" y2="308" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-            <text x="420" y="312">SMALL INTESTINE</text>
+          <!-- Small intestine (right) -->
+          <line x1="304" y1="280" x2="370" y2="280" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="374" y="284">SMALL</text>
+          <text x="374" y="296">INTESTINE</text>
 
-            <!-- LARGE INTESTINE (above the frame) -->
-            <line x1="640" y1="150" x2="640" y2="120" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-            <text x="640" y="110" text-anchor="middle">LARGE INTESTINE</text>
+          <!-- Large intestine (left) -->
+          <line x1="152" y1="262" x2="100" y2="262" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="96" y="266" text-anchor="end">LARGE</text>
+          <text x="96" y="278" text-anchor="end">INTESTINE</text>
 
-            <!-- RECTUM (below the rectum) -->
-            <line x1="692" y1="338" x2="820" y2="338" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
-            <text x="824" y="342">RECTUM</text>
-          </g>
-        </svg>
+          <!-- Rectum (right) -->
+          <line x1="248" y1="338" x2="340" y2="338" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="344" y="342">RECTUM</text>
+
+          <!-- Appendix (left, small label) -->
+          <line x1="146" y1="240" x2="100" y2="240" stroke="#9c4f30" stroke-width="0.8" opacity="0.55"/>
+          <text x="96" y="244" text-anchor="end" font-size="9">APPENDIX</text>
+        </g>
+      </svg>
       </div>
     </section>
 
