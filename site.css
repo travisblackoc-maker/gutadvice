@@ -215,29 +215,162 @@ img, svg { max-width: 100%; display: block; }
 }
 .btn-ghost:hover { background: var(--bg-card); text-decoration: none; }
 
-/* ---- Email capture ---- */
-.signup {
+/* ---- Email capture (MailerLite embed, form 45827377) ----
+   The embed ships no stylesheet of its own — we deliberately do not load
+   MailerLite's CSS because it would fight the warm-clinical palette. These
+   rules re-skin the embed's markup into the same rounded pill the old
+   hand-rolled .signup form used. Class names come from MailerLite's
+   webforms.min.js and must not be renamed.
+   Note: .row-form / .row-success visibility is toggled inline by
+   ml_webform_success_45827377(), so never set `display` on those here. */
+.ml-form-embedContainer {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* The embed's own "Newsletter / Signup for news and special offers!" block
+   duplicates the section heading directly above it. */
+.ml-form-embedContent { display: none; }
+
+/* The pill: input + button share one rounded, bordered surface. */
+.ml-form-horizontalRow {
   display: flex;
   gap: 8px;
+  align-items: center;
   background: var(--bg-card);
   padding: 8px;
   border-radius: 999px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
-  max-width: 480px;
-  margin: 0 auto;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.signup input {
-  flex: 1;
+.ml-form-horizontalRow:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.ml-input-horizontal { flex: 1; min-width: 0; }
+.ml-field-group { width: 100%; }
+
+.ml-form-horizontalRow input[type="email"] {
+  width: 100%;
   border: 0;
   background: transparent;
   padding: 8px 16px;
+  /* 16px keeps iOS Safari from zooming the page on focus. */
   font-size: 16px;
   font-family: inherit;
   color: var(--ink);
   outline: none;
 }
-.signup button { padding: 13px 22px; font-size: 15px; }
+.ml-form-horizontalRow input[type="email"]::placeholder { color: var(--ink-faint); }
+
+.ml-block-form button.primary,
+.ml-block-form button.loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.ml-block-form button.primary:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 6px 16px rgba(26, 94, 92, 0.2);
+}
+.ml-block-form button.loading { cursor: default; opacity: 0.85; }
+.ml-form-embedSubmitLoad {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(250, 245, 238, 0.4);
+  border-top-color: var(--bg);
+  border-radius: 50%;
+  animation: ml-spin 0.7s linear infinite;
+}
+@keyframes ml-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .ml-form-embedSubmitLoad { animation-duration: 2.4s; }
+}
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The embed renders a second, mobile-only Subscribe button that
+   MailerLite's own CSS would hide. The pill above wraps on its own, so
+   the duplicate is never needed. */
+.ml-mobileButton-horizontal { display: none; }
+
+/* Validation. webforms.min.js only adds .ml-error to the field group — it
+   injects no message — so the copy lives here or the failure is silent. */
+.ml-form-horizontalRow:has(.ml-error) {
+  border-color: var(--warm);
+  box-shadow: 0 0 0 3px var(--warm-soft);
+}
+.ml-form-formContent:has(.ml-error)::after {
+  content: "Please enter a valid email address.";
+  display: block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--warm-dark);
+}
+
+.ml-form-embedPermissions {
+  margin-top: 14px;
+}
+/* Scoped to the container so these win over `.closing p`, which is
+   declared later in this file at the same specificity. */
+.ml-form-embedContainer .ml-form-embedPermissions p {
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin: 0;
+  max-width: none;
+  line-height: 1.5;
+}
+.ml-form-embedPermissions a { color: var(--ink-muted); text-decoration: underline; }
+
+.ml-form-successContent h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  margin: 0 0 10px;
+  font-variation-settings: "opsz" 48;
+  color: var(--accent);
+}
+.ml-form-embedContainer .ml-form-successContent p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 17px;
+}
+
+/* Below ~440px the pill has no room for a side-by-side button. */
+@media (max-width: 440px) {
+  .ml-form-horizontalRow {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: var(--radius-md);
+    padding: 10px;
+  }
+  .ml-form-horizontalRow input[type="email"] { padding: 10px 12px; }
+  .ml-block-form button.primary,
+  .ml-block-form button.loading { width: 100%; padding: 14px 22px; }
+}
+
 .signup-note { font-size: 13px; color: var(--ink-faint); margin-top: 12px; }
 
 /* ---- Section ---- */
@@ -393,6 +526,10 @@ section { padding: 80px 0; }
   color: var(--ink);
 }
 .closing p { color: var(--ink-muted); margin: 0 0 32px; font-size: 17.5px; max-width: 52ch; margin-left: auto; margin-right: auto; }
+/* 48px of side padding leaves the signup pill under 240px wide on a phone. */
+@media (max-width: 560px) {
+  .closing { padding: 40px 22px; }
+}
 
 /* ---- Footer ---- */
 footer {
