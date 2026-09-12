@@ -50,5 +50,17 @@
       "label": "When to see a GI doc"
     }
   ],
-  "issues": []
+  "issues": [
+    {
+      "slug": "2026-09-13-ibs-symptoms-in-women",
+      "title": "IBS symptoms in women: the complete guide a gastroenterologist wishes every patient read first",
+      "date": "2026-09-13",
+      "tags": [
+        "ibs-fodmaps",
+        "see-a-gi-doc",
+        "diet-elimination"
+      ],
+      "excerpt": "What IBS actually is, the five symptoms women are most likely to dismiss, the four that look like IBS but often aren't, and the minimum workup to expect before accepting the label."
+    }
+  ]
 }
