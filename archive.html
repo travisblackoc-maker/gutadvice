@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter archive — GutAdvice</title>
+  <meta name="description" content="Every issue of the GutAdvice Sunday gut digest — searchable and filterable by topic. Evidence-based explainers on IBS, reflux, bloating, SIBO and more." />
+  <meta property="og:title" content="Newsletter archive — GutAdvice" />
+  <meta property="og:description" content="Every issue of the GutAdvice Sunday gut digest — searchable and filterable by topic." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gutadvice.com/archive.html" />
+  <meta name="theme-color" content="#1a5e5c" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a5e5c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23faf5ee' text-anchor='middle' font-weight='700'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <header class="container">
+    <nav class="nav">
+      <a class="brand" href="./">
+        <span class="brand-mark">G</span>
+        <span class="brand-name">GutAdvice</span>
+      </a>
+      <div class="nav-links">
+        <a href="./#topics">Topics</a>
+        <a href="./archive.html" aria-current="page">Archive</a>
+        <a href="./#about">About</a>
+      </div>
+      <a class="nav-cta btn btn-ghost" href="./#newsletter">Join the list →</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="archive-head">
+      <span class="eyebrow">The Sunday gut digest</span>
+      <h1 class="section-title">Newsletter archive</h1>
+      <p class="section-sub">Every issue, searchable and filterable by topic. New explainers land each Sunday.</p>
+    </section>
+
+    <section class="archive-controls" aria-label="Search and filter issues">
+      <div class="search-field">
+        <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M13.5 13.5 L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="search" id="archive-search" placeholder="Search issues…" autocomplete="off"
+               aria-label="Search newsletter issues by title or summary">
+      </div>
+
+      <div class="tag-chips" id="tag-chips" role="group" aria-label="Filter by topic"></div>
+
+      <div class="archive-status">
+        <p id="result-count" role="status" aria-live="polite"></p>
+        <button type="button" id="clear-filters" class="link-button" hidden>Clear filters</button>
+      </div>
+    </section>
+
+    <ul class="issue-list" id="issue-list"></ul>
+
+    <p class="archive-empty" id="empty-state" hidden></p>
+
+    <noscript>
+      <p class="archive-empty">The archive search needs JavaScript. You can still browse every issue from the
+        <a href="./sitemap.xml">sitemap</a>, or <a href="./#newsletter">join the list</a> to get new issues by email.</p>
+    </noscript>
+  </main>
+
+  <footer class="container">
+    <div class="footer-row">
+      <div>© 2026 GutAdvice · Educational content, not medical advice.</div>
+      <div class="footer-links">
+        <a href="./#about">About</a>
+        <a href="./#topics">Topics</a>
+        <a href="./archive.html">Archive</a>
+        <a href="./#newsletter">Newsletter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var listEl   = document.getElementById('issue-list');
+    var chipsEl  = document.getElementById('tag-chips');
+    var searchEl = document.getElementById('archive-search');
+    var countEl  = document.getElementById('result-count');
+    var emptyEl  = document.getElementById('empty-state');
+    var clearEl  = document.getElementById('clear-filters');
+
+    var TAGS = [];
+    var ISSUES = [];
+    var tagLabel = {};
+    var activeTags = [];
+    var query = '';
+
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    // Long-form dates read better than ISO in a reading context.
+    function formatDate(iso) {
+      var parts = String(iso).split('-');
+      if (parts.length !== 3) return iso;
+      var d = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]));
+      if (isNaN(d)) return iso;
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+    }
+
+    // ---- URL <-> state. Keeping filters in the URL is what lets the topic
+    // tiles on the landing page deep-link straight into a filtered view,
+    // and makes any filtered view shareable and bookmarkable. ----
+    function readUrl() {
+      var p = new URLSearchParams(location.search);
+      var t = p.get('tag');
+      activeTags = t ? t.split(',').filter(function (s) { return tagLabel[s]; }) : [];
+      query = p.get('q') || '';
+      searchEl.value = query;
+    }
+
+    function writeUrl(replace) {
+      var p = new URLSearchParams();
+      if (activeTags.length) p.set('tag', activeTags.join(','));
+      if (query) p.set('q', query);
+      var qs = p.toString();
+      var url = location.pathname + (qs ? '?' + qs : '');
+      history[replace ? 'replaceState' : 'pushState']({}, '', url);
+    }
+
+    // ---- Filtering. Multiple tags are OR'd: picking IBS and SIBO shows
+    // anything matching either, which is how people browse by topic. ----
+    function matches(issue) {
+      if (activeTags.length) {
+        var hit = issue.tags.some(function (t) { return activeTags.indexOf(t) !== -1; });
+        if (!hit) return false;
+      }
+      if (query) {
+        var haystack = [
+          issue.title,
+          issue.excerpt,
+          issue.tags.map(function (t) { return tagLabel[t] || t; }).join(' ')
+        ].join(' ').toLowerCase();
+        // Every whitespace-separated term must appear somewhere.
+        return query.toLowerCase().split(/\s+/).every(function (term) {
+          return !term || haystack.indexOf(term) !== -1;
+        });
+      }
+      return true;
+    }
+
+    function renderChips() {
+      chipsEl.innerHTML = TAGS.map(function (t) {
+        var on = activeTags.indexOf(t.slug) !== -1;
+        return '<button type="button" class="chip' + (on ? ' chip-on' : '') + '"' +
+               ' data-tag="' + esc(t.slug) + '" aria-pressed="' + on + '">' + esc(t.label) + '</button>';
+      }).join('');
+    }
+
+    function render() {
+      renderChips();
+
+      var results = ISSUES.filter(matches);
+      var filtering = activeTags.length > 0 || query !== '';
+
+      listEl.innerHTML = results.map(function (it) {
+        var tagHtml = it.tags.map(function (t) {
+          return '<span class="issue-tag">' + esc(tagLabel[t] || t) + '</span>';
+        }).join('');
+        return '' +
+          '<li class="issue-card">' +
+            '<a class="issue-link" href="./issues/' + esc(it.slug) + '.html">' +
+              '<time class="issue-date" datetime="' + esc(it.date) + '">' + esc(formatDate(it.date)) + '</time>' +
+              '<h2 class="issue-title">' + esc(it.title) + '</h2>' +
+              '<p class="issue-excerpt">' + esc(it.excerpt) + '</p>' +
+              '<div class="issue-tags">' + tagHtml + '</div>' +
+            '</a>' +
+          '</li>';
+      }).join('');
+
+      if (!ISSUES.length) {
+        countEl.textContent = '';
+        emptyEl.textContent = 'No issues published yet — the first one lands this Sunday.';
+        emptyEl.hidden = false;
+      } else if (!results.length) {
+        countEl.textContent = '';
+        emptyEl.textContent = 'No issues match those filters. Try removing one, or clearing the search.';
+        emptyEl.hidden = false;
+      } else {
+        countEl.textContent = results.length === ISSUES.length
+          ? results.length + (results.length === 1 ? ' issue' : ' issues')
+          : 'Showing ' + results.length + ' of ' + ISSUES.length + ' issues';
+        emptyEl.hidden = true;
+      }
+
+      clearEl.hidden = !filtering;
+    }
+
+    chipsEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.chip');
+      if (!btn) return;
+      var slug = btn.dataset.tag;
+      var i = activeTags.indexOf(slug);
+      if (i === -1) activeTags.push(slug); else activeTags.splice(i, 1);
+      writeUrl(false);
+      render();
+    });
+
+    var debounce;
+    searchEl.addEventListener('input', function () {
+      query = searchEl.value.trim();
+      render();
+      // Only the URL is debounced, so typing stays responsive without
+      // stuffing a history entry per keystroke.
+      clearTimeout(debounce);
+      debounce = setTimeout(function () { writeUrl(true); }, 400);
+    });
+
+    clearEl.addEventListener('click', function () {
+      activeTags = [];
+      query = '';
+      searchEl.value = '';
+      writeUrl(false);
+      render();
+      searchEl.focus();
+    });
+
+    window.addEventListener('popstate', function () { readUrl(); render(); });
+
+    fetch('./issues.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        TAGS = data.tags || [];
+        ISSUES = (data.issues || []).slice().sort(function (a, b) {
+          return b.date.localeCompare(a.date);
+        });
+        TAGS.forEach(function (t) { tagLabel[t.slug] = t.label; });
+        readUrl();
+        render();
+      })
+      .catch(function (err) {
+        countEl.textContent = '';
+        emptyEl.textContent = 'Could not load the archive (' + err.message + '). Please refresh.';
+        emptyEl.hidden = false;
+      });
+  })();
+  </script>
+</body>
+</html>
