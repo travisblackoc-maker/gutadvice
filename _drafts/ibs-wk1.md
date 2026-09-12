@@ -1,3 +1,10 @@
+---
+title: IBS symptoms in women: the complete guide a gastroenterologist wishes every patient read first
+tags: ibs-fodmaps, see-a-gi-doc, diet-elimination
+excerpt: What IBS actually is, the five symptoms women are most likely to dismiss, the four that look like IBS but often aren't, and the minimum workup to expect before accepting the label.
+date: 2026-09-13
+---
+
 Educational content only. Not medical advice. Not a substitute for your physician's judgment. If you have new or worsening symptoms, talk to your own doctor.
 
 # IBS symptoms in women: the complete guide a gastroenterologist wishes every patient read first
