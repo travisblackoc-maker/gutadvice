@@ -2,6 +2,7 @@
 title: IBS symptoms in women: the complete guide a gastroenterologist wishes every patient read first
 tags: ibs-fodmaps, see-a-gi-doc, diet-elimination
 excerpt: What IBS actually is, the five symptoms women are most likely to dismiss, the four that look like IBS but often aren't, and the minimum workup to expect before accepting the label.
+slug: ibs-symptoms-in-women
 date: 2026-09-13
 ---
 
@@ -72,7 +73,7 @@ The gut-brain axis is real and can be cycle-driven. Mild IBS symptom fluctuation
 
 These are the symptoms where an IBS label is most likely to be **wrong**:
 
-- **"IBS" with rectal bleeding.** Any rectal bleeding needs to be characterized and investigated. Hemorrhoids are common but not an acceptable explanation until the rest of your colon has been looked at. ??? I had a 23 year old patient with visible bleeding hemorrhoids, per the guidelines we still proceeded with colonoscopy and I found a large advanced polyp in his sigmoid colon at the same time. He did not have any family history of colon cancer, but this polyp could have easily continued to grow into cancer well before he was technically due for colon cancer screening. 6 weeks later his mother came to me for her first colon cancer screening colonoscopy.???
+- **"IBS" with rectal bleeding.** Any rectal bleeding needs to be characterized and investigated. Hemorrhoids are common but not an acceptable explanation until the rest of your colon has been looked at. I had a 23 year old patient with visible bleeding hemorrhoids, per the guidelines we still proceeded with colonoscopy and I found a large advanced polyp in his sigmoid colon at the same time. He did not have any family history of colon cancer, but this polyp could have easily continued to grow into cancer well before he was technically due for colon cancer screening. 6 weeks later his mother came to me for her first colon cancer screening colonoscopy.
 - **"IBS" with unintentional weight loss.** IBS does not cause weight loss. If you've lost 5%+ of your body weight without trying, that's a red flag. Please consult with a physician ASAP.
 - **"IBS" with persistent elevated inflammatory markers (CRP, calprotectin).** IBS does not elevate these. Persistent elevation needs IBD workup.
 - **"IBS" with new symptoms after age 50.** New-onset IBS-like symptoms after 50 warrant colonoscopy regardless of family history. This is the rule, not the exception.
@@ -105,8 +106,6 @@ If any of those were skipped and you were told "it's IBS," consider asking for t
 5. **If you have any of the red-flag symptoms in §3,** book a visit with your primary care doctor or a gastroenterologist as soon as possible — don't wait for your calendar to give you permission.
 
 ## 7. The first 30 days — what evidence-based IBS management actually looks like (ACG + AGA, 2021–2022)
-
-`[v1.1: corrected per ACG/AGA — see audit notes]`
 
 If your workup is complete and your diagnosis is IBS, here is what the first 30 days should look like, ordered by evidence quality, drawing on the ACG 2021 guideline and the AGA 2022 clinical practice guidelines on IBS-D and IBS-C.
 
@@ -142,8 +141,6 @@ ACG 2021 Rec #13: Conditional FOR peppermint oil for global IBS symptoms. The ev
 
 **Antispasmodics (dicyclomine, hyoscyamine, hyoscine butylbromide) — note the society disagreement.**
 
-`[v1.1: corrected per ACG/AGA — see audit notes]`
-
 This is the one therapeutic class where the ACG and AGA directly disagree:
 - **ACG 2021 Rec #12:** Conditional recommendation **AGAINST** antispasmodics **available in the United States** (dicyclomine, hyoscyamine, hyoscine butylbromide is available in US as Levsin / Levbid). Rationale: "paucity of data supporting their efficacy" for the US-available agents specifically. The ACG explicitly notes that more robust data exists for non-US antispasmodics.
 - **AGA 2022 (both IBS-D and IBS-C):** Conditional FOR antispasmodics (low certainty) — based on international meta-analyses that include non-US agents.
@@ -160,8 +157,6 @@ ACG 2021 Rec #24: Conditional FOR gut-directed psychotherapy (CBT, gut-directed 
 - **Fecal microbiota transplant (FMT).** ACG 2021 Rec #25: Strong recommendation AGAINST.
 - **Probiotics as a class.** ACG 2021 Rec #14: Conditional recommendation AGAINST probiotics for global IBS symptoms. Some specific strains have positive trials, but the class effect is not supported. "Take a probiotic" is not evidence-based IBS care.
 - **Long-term broad-spectrum antibiotic therapy for "SIBO overlap."** The AGA 2020 SIBO CPU (Quigley et al., PMID 32679220) explicitly states that the role of SIBO in IBS pathogenesis is unresolved and that long-term antibiotic therapy carries risk.
-
-**`[v1.1 end] — back to article body`**
 
 ---
 

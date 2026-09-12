@@ -9,13 +9,15 @@ From a Markdown draft (recommended) -- metadata can live in front matter:
     title: What FODMAPs actually are
     tags: ibs-fodmaps, diet-elimination
     excerpt: A plain-language primer on the carbohydrates behind IBS symptoms.
+    slug: fodmaps-explained
     date: 2026-09-13
     ---
 
     Body starts here...
 
 Anything omitted is inferred: title from the first `# Heading`, excerpt from
-the first paragraph, date from today. Command-line flags override front matter.
+the first paragraph, slug from the title, date from today. Command-line flags
+override front matter. Set `slug:` when the headline would make an unwieldy URL.
 Write `excerpt:` explicitly -- see the warning the script prints if you don't.
 
 Or scaffold an empty page and paste the body in by hand:
@@ -92,9 +94,25 @@ def md_to_html(md_text: str) -> str:
         raise SystemExit(1)
     # escape=False so raw HTML in the draft passes through untouched.
     render = mistune.create_markdown(escape=False, plugins=["strikethrough", "table", "url"])
-    html = render(md_text).strip()
-    # The template already renders the title in <header>, so drop a leading H1.
-    return re.sub(r"^\s*<h1[^>]*>.*?</h1>\s*", "", html, count=1, flags=re.S).strip()
+    return render(md_text).strip()
+
+
+def strip_title_heading(rendered: str, title: str) -> str:
+    """Drop the body's own <h1> of the title -- the template already renders it
+    in <header>, and two <h1>s is wrong for both SEO and screen readers.
+
+    It is not always the first element: drafts often open with a disclaimer or
+    standfirst above the heading, so match on the text rather than position.
+    """
+    def norm(t: str) -> str:
+        return " ".join(html_mod.unescape(re.sub(r"<[^>]+>", "", t)).split()).lower()
+
+    target = norm(title)
+    for m in re.finditer(r"<h1[^>]*>(.*?)</h1>", rendered, re.S):
+        if norm(m.group(1)) == target:
+            return (rendered[:m.start()] + rendered[m.end():]).strip()
+    # No match (the draft titled it differently) -- fall back to a leading H1.
+    return re.sub(r"^\s*<h1[^>]*>.*?</h1>\s*", "", rendered, count=1, flags=re.S).strip()
 
 
 def first_paragraph_text(rendered: str) -> str:
@@ -132,6 +150,7 @@ def main() -> int:
     ap.add_argument("--title", help="Issue headline (overrides front matter / first # heading)")
     ap.add_argument("--tags", help="Comma-separated tag slugs (overrides front matter)")
     ap.add_argument("--excerpt", help="One-sentence summary for the archive card and meta description")
+    ap.add_argument("--slug", help="URL slug, without the date prefix (default: from the title)")
     ap.add_argument("--date", help="Publish date, YYYY-MM-DD (default: today)")
     args = ap.parse_args()
 
@@ -186,7 +205,9 @@ def main() -> int:
         print("error: at least one tag is required", file=sys.stderr)
         return 1
 
-    slug = f"{date}-{slugify(title)}"
+    # A long headline makes a long URL. `slug:` decouples the two so the page
+    # can keep its full <h1> while the URL stays short and shareable.
+    slug = f"{date}-{slugify(args.slug or meta.get('slug') or title)}"
     out = ISSUE_DIR / f"{slug}.html"
     if out.exists():
         print(f"error: {out.relative_to(ROOT)} already exists", file=sys.stderr)
@@ -194,6 +215,9 @@ def main() -> int:
     if any(i["slug"] == slug for i in data["issues"]):
         print(f"error: slug {slug!r} is already in issues.json", file=sys.stderr)
         return 1
+
+    if body_html:
+        body_html = strip_title_heading(body_html, title)
 
     excerpt = (args.excerpt or meta.get("excerpt") or "").strip()
     derived_excerpt = False
