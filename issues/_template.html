@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}} — GutAdvice</title>
+  <meta name="description" content="{{EXCERPT}}" />
+  <meta property="og:title" content="{{TITLE}} — GutAdvice" />
+  <meta property="og:description" content="{{EXCERPT}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://gutadvice.com/issues/{{SLUG}}.html" />
+  <meta property="article:published_time" content="{{DATE}}" />
+  <meta name="theme-color" content="#1a5e5c" />
+  <link rel="canonical" href="https://gutadvice.com/issues/{{SLUG}}.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a5e5c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23faf5ee' text-anchor='middle' font-weight='700'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css" />
+</head>
+<body>
+  <header class="container">
+    <nav class="nav">
+      <a class="brand" href="../">
+        <span class="brand-mark">G</span>
+        <span class="brand-name">GutAdvice</span>
+      </a>
+      <div class="nav-links">
+        <a href="../#topics">Topics</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../#about">About</a>
+      </div>
+      <a class="nav-cta btn btn-ghost" href="../#newsletter">Join the list →</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="issue">
+      <a class="issue-back" href="../archive.html">← All issues</a>
+
+      <header class="issue-header">
+        <time class="issue-date" datetime="{{DATE}}">{{DATE_LONG}}</time>
+        <h1>{{TITLE}}</h1>
+        <p class="issue-standfirst">{{EXCERPT}}</p>
+        <div class="issue-tags">{{TAG_LINKS}}</div>
+      </header>
+
+      <div class="issue-body">
+        <!-- ▼▼ PASTE THE ISSUE BODY HERE ▼▼
+             Plain HTML: <p>, <h2>, <ul>, <ol>, <blockquote>, <a>.
+             Don't paste MailerLite's email HTML — it's table markup and
+             will fight site.css. Copy the text, wrap it in these tags. -->
+
+        <p>Replace this paragraph with the issue content.</p>
+
+        <!-- ▲▲ END ISSUE BODY ▲▲ -->
+      </div>
+
+      <aside class="issue-cta">
+        <h2>Get this in your inbox</h2>
+        <p>One short, well-sourced email each Sunday. No spam, no ads, easy unsubscribe.</p>
+        <a class="btn btn-primary" href="../#newsletter">Join the list →</a>
+      </aside>
+    </article>
+  </main>
+
+  <footer class="container">
+    <div class="footer-row">
+      <div>© 2026 GutAdvice · Educational content, not medical advice.</div>
+      <div class="footer-links">
+        <a href="../#about">About</a>
+        <a href="../#topics">Topics</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../#newsletter">Newsletter</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

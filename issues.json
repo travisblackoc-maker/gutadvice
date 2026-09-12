@@ -1,0 +1,54 @@
+{
+  "_comment": "Single source of truth for the archive. `tags` defines the vocabulary used by archive.html's filter chips, index.html's topic tiles, and new_issue.py's validation. Edit tags here and all three follow. `issues` is maintained by new_issue.py -- newest first.",
+  "tags": [
+    {
+      "slug": "ibs-fodmaps",
+      "label": "IBS & FODMAPs"
+    },
+    {
+      "slug": "gerd-reflux",
+      "label": "GERD & reflux"
+    },
+    {
+      "slug": "sibo-imo",
+      "label": "SIBO & IMO"
+    },
+    {
+      "slug": "bloating-gas",
+      "label": "Bloating & gas"
+    },
+    {
+      "slug": "constipation",
+      "label": "Constipation"
+    },
+    {
+      "slug": "diarrhea",
+      "label": "Diarrhea"
+    },
+    {
+      "slug": "microbiome",
+      "label": "Microbiome basics"
+    },
+    {
+      "slug": "probiotics-prebiotics",
+      "label": "Probiotics & prebiotics"
+    },
+    {
+      "slug": "diet-elimination",
+      "label": "Diet & elimination"
+    },
+    {
+      "slug": "colon-cancer-screening",
+      "label": "Colon cancer screening"
+    },
+    {
+      "slug": "celiac-gluten",
+      "label": "Celiac & gluten"
+    },
+    {
+      "slug": "see-a-gi-doc",
+      "label": "When to see a GI doc"
+    }
+  ],
+  "issues": []
+}

@@ -549,3 +549,274 @@ footer {
 .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 .footer-links a { color: var(--ink-muted); }
 .footer-links a:hover { color: var(--ink); }
+
+/* ---- Topic tiles as archive links ----
+   The tiles in #topics are anchors into archive.html pre-filtered by tag.
+   `.topic` already sets color, so only the link affordances are needed. */
+a.topic { transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease; }
+a.topic:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+a.topic:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Archive page ---- */
+.archive-head { padding: 48px 0 8px; }
+.archive-head .section-title { margin-bottom: 12px; }
+
+.archive-controls {
+  padding: 16px 0 0;
+  display: grid;
+  gap: 18px;
+}
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  max-width: 520px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.search-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.search-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 18px;
+  color: var(--ink-faint);
+  flex: none;
+}
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 14px 18px 14px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+}
+.search-field input::placeholder { color: var(--ink-faint); }
+/* Safari draws its own clear button; the Clear filters control covers this. */
+.search-field input::-webkit-search-decoration,
+.search-field input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.tag-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.chip-on:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--bg); }
+
+.archive-status {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  min-height: 24px;
+}
+.archive-status p { margin: 0; font-size: 14px; color: var(--ink-faint); }
+.link-button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.issue-list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.issue-card { margin: 0; }
+.issue-link {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 26px 28px;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.15s ease;
+}
+.issue-link:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--accent);
+}
+.issue-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.issue-date {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--warm-dark);
+  margin-bottom: 10px;
+}
+.issue-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 10px;
+  font-variation-settings: "opsz" 48;
+  color: var(--ink);
+}
+.issue-excerpt {
+  margin: 0 0 16px;
+  color: var(--ink-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+.issue-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.issue-tag {
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 5px 11px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 999px;
+}
+a.issue-tag { transition: background 0.15s ease; }
+a.issue-tag:hover { background: var(--warm-soft); color: var(--warm-dark); text-decoration: none; }
+
+.archive-empty {
+  margin: 36px 0 0;
+  padding: 32px;
+  text-align: center;
+  color: var(--ink-muted);
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* ---- Single issue page ---- */
+.issue { max-width: 72ch; margin: 0 auto; padding: 40px 0 0; }
+.issue-back {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 28px;
+}
+.issue-back:hover { color: var(--accent-dark); }
+
+.issue-header { margin-bottom: 40px; }
+.issue-header h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4.4vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  color: var(--ink);
+}
+.issue-standfirst {
+  font-size: clamp(17px, 1.7vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin: 0 0 20px;
+}
+
+.issue-body { font-size: 17.5px; line-height: 1.75; }
+.issue-body > *:first-child { margin-top: 0; }
+.issue-body p { margin: 0 0 22px; }
+.issue-body h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 44px 0 14px;
+  font-variation-settings: "opsz" 48;
+  color: var(--ink);
+}
+.issue-body h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 19px;
+  margin: 32px 0 10px;
+  color: var(--ink);
+}
+.issue-body ul, .issue-body ol { margin: 0 0 22px; padding-left: 24px; }
+.issue-body li { margin-bottom: 9px; }
+.issue-body a { text-decoration: underline; text-underline-offset: 3px; }
+.issue-body blockquote {
+  margin: 28px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--accent-soft);
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.issue-body img { border-radius: var(--radius-sm); margin: 28px 0; }
+.issue-body code {
+  font-size: 0.9em;
+  background: var(--accent-soft);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+.issue-body hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
+
+.issue-cta {
+  margin: 56px 0 0;
+  padding: 36px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+.issue-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  margin: 0 0 10px;
+  font-variation-settings: "opsz" 48;
+  color: var(--ink);
+}
+.issue-cta p { color: var(--ink-muted); margin: 0 0 22px; font-size: 16.5px; }
+
+@media (max-width: 560px) {
+  .issue-link { padding: 22px 20px; }
+  .issue-cta { padding: 28px 20px; }
+  .issue { padding-top: 24px; }
+}
