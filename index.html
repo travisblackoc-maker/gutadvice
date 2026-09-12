@@ -302,7 +302,7 @@
                       <div class="ml-input-horizontal">
                         <div style="width: 100%;" class="horizontal-fields">
                           <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                            <input type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                            <input type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email" aria-label="Your email address">
                           </div>
                         </div>
                       </div>
@@ -351,6 +351,16 @@
         $('.ml-subscribe-form-45827377 .row-success').show();
         $('.ml-subscribe-form-45827377 .row-form').hide();
       }
+      // webforms.min.js adds .ml-error on a failed submit but never clears it
+      // while the user types, so the red ring and message would stick around
+      // after they've fixed the address. Clear it on input; MailerLite re-adds
+      // it on the next submit if the value is still invalid.
+      document.addEventListener('input', function (e) {
+        if (e.target.matches('.ml-block-form input')) {
+          var group = e.target.closest('.ml-field-group');
+          if (group) group.classList.remove('ml-error');
+        }
+      });
     </script>
     <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
     <script>
