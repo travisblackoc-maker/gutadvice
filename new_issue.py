@@ -3,7 +3,7 @@
 
 From a Markdown draft (recommended) -- metadata can live in front matter:
 
-    python3 new_issue.py --from drafts/fodmaps.md
+    python3 new_issue.py --from _drafts/fodmaps.md
 
     ---
     title: What FODMAPs actually are
