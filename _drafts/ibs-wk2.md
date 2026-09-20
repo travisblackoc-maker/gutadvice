@@ -1,4 +1,12 @@
-> **Disclaimer at top of article:** Educational content only. Not medical advice. Not a substitute for your physician's judgment.
+---
+title: IBS-C vs IBS-D: why the distinction changes your treatment
+tags: ibs-fodmaps, see-a-gi-doc, constipation, diarrhea
+excerpt: Updated IBS subtype treatment options, AGA & ACG Guidelines.
+slug: ibs-subtypes-treatments
+date: 2026-09-20
+---
+
+Educational content only. Not medical advice. Not a substitute for your physician's judgment. If you have new or worsening symptoms, talk to your own doctor.
 
 # IBS-C vs IBS-D: why the distinction changes your treatment
 
