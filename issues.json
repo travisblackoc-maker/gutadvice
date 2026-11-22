@@ -52,6 +52,19 @@
   ],
   "issues": [
     {
+      "slug": "2026-11-22-ibs-treatment-2026",
+      "title": "IBS treatment in 2026: what actually works",
+      "date": "2026-11-22",
+      "tags": [
+        "ibs-fodmaps",
+        "see-a-gi-doc",
+        "constipation",
+        "diarrhea",
+        "diet-elimination"
+      ],
+      "excerpt": "AGA 2022 ranked every IBS treatment by evidence tier. We walk through what actually works — Strong FOR, Conditional FOR, and what to avoid."
+    },
+    {
       "slug": "2026-09-20-ibs-subtypes-treatments",
       "title": "IBS-C vs IBS-D: why the distinction changes your treatment",
       "date": "2026-09-20",
